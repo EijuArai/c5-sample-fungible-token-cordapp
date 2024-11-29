@@ -1,19 +1,18 @@
-# サンプルFungibleTokenアプリ
+# Sample FungibleToken App
 
-Corda5 GA版で提供されているTokenSelectionAPI, FungibleState, IssuableState, OwnableStateを実装したFungibleTokenを作成しました．
+This is a sample FungibleToken Cordapp implementing TokenSelectionAPI, FungibleState, IssuableState, and OwnableState provided in Corda5.
 
-### サンプルアプリを触ってみよう
+### How to use
 
-Corda 5ではflowは`POST /flow/{holdingidentityshorthash}`
-からトリガーされます．そしてflowのステータスは`GET /flow/{holdingidentityshorthash}/{clientrequestid}`で確認できます．
+In Corda 5, flows are triggered from `POST /flow/{holdingidentityshorthash}`, and the flow status can be checked at `GET /flow/{holdingidentityshorthash}/{clientrequestid}`.
 
-* holdingidentityshorthash: ネットワーク参加者のIDです．ネットワークの全ての参加者のIDは`ListVNodes`タスクで確認できます．
-* clientrequestid: 実行するflowのプロセスに与えられるIDです．
+* holdingidentityshorthash: This is the ID of network participants. The IDs of all participants in the network can be checked with the `ListVNodes` task.
+* clientrequestid: This is the ID given to the process of the flow to be executed.
 
-#### Step 1: Tokenを発行しよう
+#### Step 1: Let's Issue Tokens
 
-BobにUSDを100単位発行します．
-`POST /flow/{holdingidentityshorthash}`に行って，以下のRequest BodyでPOSTしてください．
+We'll issue 100 units of USD to Bob.
+Go to `POST /flow/{holdingidentityshorthash}` and POST with the following Request Body:
 
 ```
 {
@@ -29,13 +28,13 @@ BobにUSDを100単位発行します．
 }
 ```
 
-flowのステータスは`GET /flow/{holdingidentityshorthash}/{clientrequestid}`で確認してください．
+Check the flow status at `GET /flow/{holdingidentityshorthash}/{clientrequestid}`.
 
-#### Step 2: Tokenを移転しよう
+#### Step 2: Let's Transfer Tokens
 
-Step1でBobに発行したUSDを50単位Aliceに移転します．
-`POST /flow/{holdingidentityshorthash}`に行って，以下のRequest BodyでPOSTしてください．
-ownerId，issuerIdとownerIdは(ry
+We'll transfer 50 units of USD issued to Bob in Step 1 to Alice.
+Go to `POST /flow/{holdingidentityshorthash}` and POST with the following Request Body:
+The ownerId, issuerId, and ownerId are...
 
 ```
 {
@@ -52,13 +51,13 @@ ownerId，issuerIdとownerIdは(ry
 }
 ```
 
-例によってflowのステータスは`GET /flow/{holdingidentityshorthash}/{clientrequestid}`で確認してください．
+As usual, check the flow status at `GET /flow/{holdingidentityshorthash}/{clientrequestid}`.
 
-#### Step 3: Tokenを償還しよう
+#### Step 3: Let's Redeem Tokens
 
-Step1でBobに発行したUSDを50単位償還します．
-`POST /flow/{holdingidentityshorthash}`に行って，以下のRequest BodyでPOSTしてください．
-ownerId，issuerIdとownerIdは(ry
+We'll redeem 50 units of USD issued to Bob in Step 1.
+Go to `POST /flow/{holdingidentityshorthash}` and POST with the following Request Body:
+The ownerId, issuerId, and ownerId are...
 
 ```
 {
@@ -74,13 +73,13 @@ ownerId，issuerIdとownerIdは(ry
 }
 ```
 
-例によってflowのステータスは`GET /flow/{holdingidentityshorthash}/{clientrequestid}`で確認してください．
+As usual, check the flow status at `GET /flow/{holdingidentityshorthash}/{clientrequestid}`.
 
-#### Step 4: 残高を照会しよう
+#### Step 4: Let's Check the Balance
 
-BobのTokenの残高を確認します．
-`POST /flow/{holdingidentityshorthash}`に行って，以下のRequest BodyでPOSTしてください．
-ownerId，issuerIdとownerIdは(ry
+We'll check Bob's Token balance.
+Go to `POST /flow/{holdingidentityshorthash}` and POST with the following Request Body:
+The ownerId, issuerId, and ownerId are...
 
 ```
 {
@@ -94,4 +93,4 @@ ownerId，issuerIdとownerIdは(ry
 }
 ```
 
-例によってflowのステータスは`GET /flow/{holdingidentityshorthash}/{clientrequestid}`で確認してください．
+As usual, check the flow status at `GET /flow/{holdingidentityshorthash}/{clientrequestid}`.
